@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #fffef8;
+    height: 100%;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo a {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #000;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    padding-left: 40px;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 10;
+    background-color: #ffcc00;
+    border-bottom: 1px solid #000;
+    position: fixed;
+    top: 0;
+}
+
+.text-box {
+    width: 90%;
+    position: relative;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin-top: 100px;
+    text-align: center;
+}
+
+.text-box h1 {
+    color: #3d2e21;
+    font-weight: bolder;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: left; 
+    margin-left: 5%;
+    align-items: center;    
+    padding: 10px;    
+    margin-top: 50px;
+}
+
+.filter-select {
+    padding: 5px 15px;
+    border-radius: 30px;
+    border: 1px solid #000000;
+    background-color: #ffcc00;
+    font-size: 16px;
+    width: 170px;  
+    margin-right: 10px; 
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.filter-select:hover {
+    border-color: #ffcc00;
+}
+
+.filter-select:focus {
+    border-color: #000;
+    outline: none;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
+.card {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-body h5 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.card-body p {
+    font-size: 0.8rem;
+}
+
+.btn-select {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #ffcc00;
+    color: #000;
+    text-decoration: none;
+    border-radius: 30px;
+    border: 1px solid #000;
+    width: 100%;
+    text-align: center;
+}
+
+.maps-container {
+    display: flex;
+    justify-content: center;  
+    align-items: center;  
+    margin-bottom: 40px;     
+    padding: 2%; 
+}
+
+#mappy {
+    height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+footer {
+    background-color: #ffcc00;
+    padding: 20px 30px; 
+    text-align: center; 
+    border-top: 1px solid #000;
+}
+
+/* mobile ver */
+@media (max-width: 768px) {
+    .logo a {
+        font-size: 2rem;
+    }
+
+    .cards-container {
+        gap: 25px;
+        padding: 0 10px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .btn-select {
+        padding: 8px 12px;
+        border-radius: 30px;
+    }
+
+    .text-box h1 {
+        font-size: 2rem;
+    }
+}

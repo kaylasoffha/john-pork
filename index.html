@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="ts.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="base">
+        <nav>
+            <div class="logo"><a href="">jual<i>in</i></a></div>
+        </nav>
+
+        <div class="text-box">
+            <div class="descr">
+                <h1>Rekomendasi tempat terbaik untuk mu!</h1>
+            </div>
+        </div>
+
+        <div class="filter-container">
+            <select id="category-filter" class="filter-select">
+                <option value="all">Kategori tempat</option>
+                <option value="lapangan">Lapangan</option>
+                <option value="sekloah">Sekloah</option>
+                <option value="tepijalan">Tepi jalan</option>
+                <option value="pasar">Pasar</option>
+            </select>
+        </div>
+
+        <div class="cards-container">
+            <div class="card" style="width: 18rem;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqwCTQ2QIMe5g9OnjX8SIf-FvF94vMPqSIG5SSR8o_hd3z243UMhSqXa-Cd07f_0zqC2I&usqp=CAU" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Pasar Simpang Dago</h5>
+                  <p class="card-text">Alamat lengkap: Lebak Gede, Coblong, Kota Bandung, Jawa Barat, 40132<br>Deskripsi: Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Latitude: -6.895 <br>Longitude: 107.615 </p>
+                  <a href="#" class="btn btn-select">Arahkan lokasi</a>
+                </div>
+            </div>
+            <!-- Duplicate Cards -->
+            <div class="card" style="width: 18rem;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqwCTQ2QIMe5g9OnjX8SIf-FvF94vMPqSIG5SSR8o_hd3z243UMhSqXa-Cd07f_0zqC2I&usqp=CAU" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Pasar Simpang Dago</h5>
+                  <p class="card-text">Alamat lengkap: Lebak Gede, Coblong, Kota Bandung, Jawa Barat, 40132<br>Deskripsi: Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Latitude: -6.895 <br>Longitude: 107.615 </p>
+                  <a href="#" class="btn btn-select">Arahkan lokasi</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqwCTQ2QIMe5g9OnjX8SIf-FvF94vMPqSIG5SSR8o_hd3z243UMhSqXa-Cd07f_0zqC2I&usqp=CAU" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Pasar Simpang Dago</h5>
+                  <p class="card-text">Alamat lengkap: Lebak Gede, Coblong, Kota Bandung, Jawa Barat, 40132<br>Deskripsi: Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Latitude: -6.895 <br>Longitude: 107.615 </p>
+                  <a href="#" class="btn btn-select">Arahkan lokasi</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqwCTQ2QIMe5g9OnjX8SIf-FvF94vMPqSIG5SSR8o_hd3z243UMhSqXa-Cd07f_0zqC2I&usqp=CAU" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Pasar Simpang Dago</h5>
+                  <p class="card-text">Alamat lengkap: Lebak Gede, Coblong, Kota Bandung, Jawa Barat, 40132<br>Deskripsi: Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Latitude: -6.895 <br>Longitude: 107.615 </p>
+                  <a href="#" class="btn btn-select">Arahkan lokasi</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="maps-container">
+            <div id="mappy"></div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Jualin. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        let map;  // Global variable for map
+        let marker;  // Global variable for marker
+
+        const locations = {
+            cipaganti: [-6.885761721042189, 107.61555615629068],
+            dago: [-6.895, 107.615],
+            lebakgede: [-6.888, 107.617],
+            lebaksiliwangi: [-6.890, 107.610],
+            sadangserang: [-6.895, 107.620],
+            sekeloa: [-6.890, 107.625]
+        };
+
+        function initMap() {
+            map = L.map('mappy').setView([-6.885761721042189, 107.61555615629068], 13); // Koordinat default
+        
+            // Menambahkan tile layer OpenStreetMap ke peta
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+        
+            // Menambahkan marker di titik pusat awal
+            marker = L.marker([-6.885761721042189, 107.61555615629068]).addTo(map);
+            marker.bindPopup("gw di unikom").openPopup();
+        }        
+
+        window.onload = initMap;
+    </script>
+</body>
+</html>
